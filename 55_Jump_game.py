@@ -11,13 +11,28 @@ class Solution(object):
             far = max(far, nums[i]+i)
         return True
 
+    def canJump2(self, nums):
+        jumps = 0
+        current_end = 0
+        farthest = 0
+        for i in range(len(nums)-1):
+            farthest = max(i + nums[i], farthest)
+            if i == current_end:
+                jumps += 1
+                current_end = farthest
+        return jumps
+
+
+
+
+
 
 
 
 if __name__ == "__main__":
 
-    nums = [3,2,1,0,4]
+    nums = [2,3,0,1,4]
     solution = Solution()
-    k = solution.canJump(nums)
+    k = solution.canJump2(nums)
 
     print(k)
